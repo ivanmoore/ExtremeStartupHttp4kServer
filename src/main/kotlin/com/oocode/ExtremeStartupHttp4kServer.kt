@@ -14,10 +14,6 @@ import org.http4k.server.asServer
 val app: HttpHandler = routes(
     "/ping" bind GET to {
         Response(OK).body("pong")
-    },
-
-    "/testing/hamkrest" bind GET to {request ->
-        Response(OK).body("Echo '${request.bodyString()}'")
     }
 )
 
