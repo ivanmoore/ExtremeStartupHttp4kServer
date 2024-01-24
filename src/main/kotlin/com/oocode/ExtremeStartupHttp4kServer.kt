@@ -18,9 +18,10 @@ val app: HttpHandler = routes(
 )
 
 fun main() {
-    val printingApp: HttpHandler = PrintRequest().then(app)
-
-    val server = printingApp.asServer(SunHttp(9000)).start()
-
+    val server = ExtremeStartupHttp4kServer.http4kServer.start()
     println("Server started on " + server.port())
+}
+
+object ExtremeStartupHttp4kServer {
+    val http4kServer = PrintRequest().then(app).asServer(SunHttp(9000))
 }
