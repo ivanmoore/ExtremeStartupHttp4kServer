@@ -12,8 +12,9 @@ import org.http4k.server.SunHttp
 import org.http4k.server.asServer
 
 val app: HttpHandler = routes(
-    "/ping" bind GET to {
-        Response(OK).body("pong")
+    "/" bind GET to {
+        val queries = it.queries("q")
+        Response(OK).body(queries.firstOrNull()?.let { "Someone" } ?: HomePage.HTML)
     }
 )
 
@@ -24,4 +25,14 @@ fun main() {
 
 object ExtremeStartupHttp4kServer {
     val http4kServer = PrintRequest().then(app).asServer(SunHttp(9000))
+}
+
+private object HomePage {
+    val HTML = """
+<html>
+    <body>
+    <h1>Extreme startup player (http4k)</h1>
+    <p>This is a minimal web app starting point for <a href='https://extreme-startup.fly.dev/'>Extreme startup</a></p>
+    </body>
+</html>""".trim()
 }
