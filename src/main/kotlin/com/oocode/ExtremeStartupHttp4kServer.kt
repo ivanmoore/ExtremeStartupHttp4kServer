@@ -14,7 +14,7 @@ import org.http4k.server.asServer
 val app: HttpHandler = routes(
     "/" bind GET to {
         val queries = it.queries("q")
-        Response(OK).body(queries.firstOrNull()?.let { "Someone" } ?: HomePage.HTML)
+        Response(OK).body(queries.firstOrNull()?.let { question -> Answerer().answerFor(question) } ?: HomePage.HTML)
     }
 )
 
