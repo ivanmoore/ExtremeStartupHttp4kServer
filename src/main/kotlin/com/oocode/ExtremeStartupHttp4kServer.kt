@@ -24,7 +24,7 @@ fun main() {
 }
 
 object ExtremeStartupHttp4kServer {
-    val http4kServer = app.asServer(SunHttp(9000))
+    val http4kServer = app.asServer(SunHttp(8124))
 }
 
 private object HomePage {

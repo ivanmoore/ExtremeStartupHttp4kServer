@@ -12,7 +12,7 @@ This is a starting point for a Kotlin http4k player of the Extreme Startup game 
     - ```./gradlew build```
 5. _Optionally_, you can run the service on your machine:
     - ```./gradlew run```
-    - open http://127.0.0.1:8123/
+    - open http://127.0.0.1:8124/
     - You should see:
         - ![image](Screenshot.png)
     - <code style="color:red">Stop the server</code>
@@ -113,9 +113,9 @@ docker build -t extreme_startup_player .
 ```
 2. run docker container based on that image
 ```bash
-docker run -p 8123:8123 --name extreme_startup_player extreme_startup_player
+docker run -p 8124:8124 --name extreme_startup_player extreme_startup_player
 ```
-3. See it running: http://localhost:8123/
+3. See it running: http://localhost:8124/
 4. run docker container based on that image
 ```bash
 docker rm -f extreme_startup_player
